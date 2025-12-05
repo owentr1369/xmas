@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a472a 0%, #0f2818 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Snowflakes animation */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            opacity: 0.8;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .card-container {
+            perspective: 1500px;
+            cursor: pointer;
+        }
+
+        .card {
+            width: 400px;
+            height: 550px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s ease;
+        }
+
+        .card.open {
+            transform: rotateY(-180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            border: 8px solid #d4af37;
+        }
+
+        .card-front h1 {
+            color: #ffd700;
+            font-size: 3em;
+            text-align: center;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .snowman {
+            font-size: 5em;
+            margin: 20px 0;
+        }
+
+        .click-text {
+            color: white;
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, #f4f4f4 0%, #e8e8e8 100%);
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            border: 8px solid #d4af37;
+        }
+
+        .card-back h2 {
+            color: #c41e3a;
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .qr-placeholder {
+            width: 200px;
+            height: 200px;
+            background: white;
+            border: 4px solid #c41e3a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .qr-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .message {
+            color: #2c5f2d;
+            font-size: 1.2em;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .decoration {
+            position: absolute;
+            font-size: 2em;
+        }
+
+        .star-top-left {
+            top: 20px;
+            left: 20px;
+        }
+
+        .star-top-right {
+            top: 20px;
+            right: 20px;
+        }
+
+        .tree-bottom-left {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .tree-bottom-right {
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card-container" onclick="toggleCard()">
+        <div class="card" id="card">
+            <div class="card-front">
+                <span class="decoration star-top-left">⭐</span>
+                <span class="decoration star-top-right">⭐</span>
+                <h1>🎄 Merry Christmas 🎄</h1>
+                <div class="snowman">⛄</div>
+                <p class="click-text">Click to Open</p>
+                <span class="decoration tree-bottom-left">🎁</span>
+                <span class="decoration tree-bottom-right">🎁</span>
+            </div>
+            <div class="card-back">
+                <h2>🎅 Christmas is Coming! 🎅</h2>
+                <div class="qr-placeholder">
+                    <img src="https://cdn.shopify.com/s/files/1/0744/2124/0063/files/Screenshot_2025-12-05_at_15.36.12.png?v=1764923807"
+                        alt="QR Code">
+                </div>
+                <p class="message">Scan the QR to Surprise! 🎉</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleCard() {
+            const card = document.getElementById('card');
+            card.classList.toggle('open');
+        }
+
+        // Create snowflakes
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * 100 + '%';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        setInterval(createSnowflake, 200);
+    </script>
+</body>
+
+</html>
