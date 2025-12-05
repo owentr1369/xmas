@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap"
+        rel="stylesheet">
     <title>Christmas Card</title>
     <style>
         * {
@@ -13,7 +17,7 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
+            font-family: "Mountains of Christmas", serif;
             background: linear-gradient(135deg, #1a472a 0%, #0f2818 100%);
             min-height: 100vh;
             display: flex;
@@ -45,8 +49,8 @@
         }
 
         .card {
-            width: 400px;
-            height: 550px;
+            width: 450px;
+            height: 580px;
             position: relative;
             transform-style: preserve-3d;
             transition: transform 0.8s ease;
@@ -72,13 +76,13 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 40px;
+            padding: 40px 20px;
             border: 8px solid #d4af37;
         }
 
         .card-front h1 {
             color: #ffd700;
-            font-size: 3em;
+            font-size: 2em;
             text-align: center;
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
             margin-bottom: 20px;
@@ -91,7 +95,8 @@
 
         .click-text {
             color: white;
-            font-size: 1.1em;
+            font-size: 1.2em;
+            font-weight: 500;
             text-align: center;
             margin-top: 20px;
             animation: pulse 2s infinite;
@@ -116,13 +121,13 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 40px;
+            padding: 40px 20px;
             border: 8px solid #d4af37;
         }
 
         .card-back h2 {
             color: #c41e3a;
-            font-size: 2em;
+            font-size: 1.5em;
             text-align: center;
             margin-bottom: 30px;
         }
@@ -193,12 +198,11 @@
                 <span class="decoration tree-bottom-right">🎁</span>
             </div>
             <div class="card-back">
-                <h2>🎅 Christmas is Coming! 🎅</h2>
+                <h2>🎅 You're invited to Promer's Noel Party! 🎄</h2>
                 <div class="qr-placeholder">
-                    <img src="https://cdn.shopify.com/s/files/1/0744/2124/0063/files/Screenshot_2025-12-05_at_15.36.12.png?v=1764923807"
-                        alt="QR Code">
+                    <img src="./qr.webp" alt="QR Code">
                 </div>
-                <p class="message">Scan the QR code for a surprise! 🎉</p>
+                <p class="message">🎄 Scan to top up the festive fund 💸 🎁</p>
             </div>
         </div>
     </div>
